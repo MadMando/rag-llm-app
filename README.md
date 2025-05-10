@@ -55,7 +55,7 @@ If you don’t have Miniconda installed, download it from:
 ### 🧪 2. Set Up the Environment
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/rag-llm-app.git
+git clone https://github.com/MadMando/rag-llm-app.git
 cd rag-llm-app
 
 # Create and activate the conda environment
