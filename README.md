@@ -30,8 +30,46 @@ A fully local, multi-user **Retrieval-Augmented Generation (RAG)** application p
 
 ## 🗂️ Project Structure
 
+rag-llm-app/
+├── app/
+│ └── main.py # FastAPI app
+├── data/ # Uploaded files or raw data
+├── langflow/ # Langflow project files (optional)
+├── Dockerfile # Build full stack container
+├── requirements.txt # Python dependencies
+├── .gitignore
+└── README.md
 
 
+---
 
+## ⚙️ Quickstart Guide (via Miniconda)
 
+> Full instructions & setup scripts are available in the repository.  
+> 👉 [github.com/yourusername/rag-llm-app](https://github.com/yourusername/rag-llm-app)
 
+### 📥 1. Install Miniconda
+If you don’t have Miniconda installed, download it from:  
+🔗 https://docs.conda.io/en/latest/miniconda.html
+
+### 🧪 2. Set Up the Environment
+```bash
+# Clone the repo
+git clone https://github.com/yourusername/rag-llm-app.git
+cd rag-llm-app
+
+# Create and activate the conda environment
+conda create -n rag-env python=3.12 -y
+conda activate rag-env
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Start ChromaDB
+chroma run --path ./data/chroma_data
+
+# Start Langflow (optional)
+langflow run
+
+# Start FastAPI server
+python app/main.py
