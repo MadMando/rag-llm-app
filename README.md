@@ -46,7 +46,7 @@ rag-llm-app/
 ## ⚙️ Quickstart Guide (via Miniconda)
 
 > Full instructions & setup scripts are available in the repository.  
-> 👉 [github.com/yourusername/rag-llm-app](https://github.com/yourusername/rag-llm-app)
+> 👉 [github.com/MadMando/rag-llm-app](https://github.com/yourusername/rag-llm-app)
 
 ### 📥 1. Install Miniconda
 If you don’t have Miniconda installed, download it from:  
