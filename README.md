@@ -1,95 +1,122 @@
-# RAG LLM App (Local & Multi-User)
+
+# 🧠 RAG LLM App (Local & Multi-User)
 
 A fully local, multi-user **Retrieval-Augmented Generation (RAG)** application powered by **Langflow**, **ChromaDB**, **Ollama**, and **FastAPI**. This project allows you to load documents, generate embeddings, store in a vector database, and query them using a local LLM — all served via an API for concurrent access.
 
----
+## 🚀 Features
 
-## Features
-
-- 🔍 **Document Search** with embeddings (PDF, TXT)
-- 🧠 **Local LLM Inference** using [Ollama](https://ollama.com/)
-- 🗃️ **ChromaDB** vector store for fast similarity search
-- ⚡ **FastAPI Backend** with support for multiple users
-- 🖼️ **Langflow UI** for building and testing LLM chains
-- 🐳 **Dockerized** for easy deployment
-
----
+- 🔍 Search across your own documents (`.pdf`, `.txt`)
+- 🧠 Local LLM inference with quantized models (via Ollama)
+- 🗃️ Vector storage and retrieval using ChromaDB
+- ⚡ FastAPI backend with multi-user support
+- 🖼️ Langflow UI for no-code visual pipelines
 
 ## 🛠️ Tech Stack
 
-| Layer            | Tool/Library         |
-|------------------|----------------------|
-| LLM              | [Ollama](https://ollama.com) (`llama3.2-1b`) |
-| Vector DB        | [ChromaDB](https://www.trychroma.com/)     |
-| Orchestration    | [Langflow](https://github.com/logspace-ai/langflow) |
-| API Layer        | [FastAPI](https://fastapi.tiangolo.com/)   |
-| Language         | Python 3.12          |
-
----
+| Layer         | Tool               |
+|---------------|--------------------|
+| LLM           | Ollama (`llama3`)  |
+| Embeddings    | Ollama (`nomic-embed-text`) |
+| Vector DB     | ChromaDB           |
+| Orchestration | Langflow           |
+| API Server    | FastAPI            |
+| Environment   | Python 3.12 (Miniconda) |
 
 ## 🗂️ Project Structure
 
+```
 rag-llm-app/
 ├── app/
-│ └── main.py # FastAPI app
-├── data/ # Uploaded files or raw data
-├── langflow/ # Langflow project files (optional)
-├── Dockerfile # Build full stack container
-├── requirements.txt # Python dependencies
+│   └── main.py          # FastAPI app
+├── data/                # Drop .pdf or .txt documents here
+├── langflow/            # Langflow project files (optional)
+├── requirements.txt     # Python dependencies (except langflow/uv)
 ├── .gitignore
 └── README.md
-
-
----
+```
 
 ## ⚙️ Quickstart Guide (via Miniconda)
 
-> Full instructions & setup scripts are available in the repository.  
-> 👉 [github.com/MadMando/rag-llm-app](https://github.com/yourusername/rag-llm-app)
+> Full setup instructions and Langflow flows are available in the repo:  
+> 👉 [https://github.com/MadMando/rag-llm-app](https://github.com/MadMando/rag-llm-app)
 
-### 📥 1. Install Miniconda
-If you don’t have Miniconda installed, download it from:  
+### 1️⃣ Install Miniconda
+
+Download Miniconda from:  
 🔗 https://docs.conda.io/en/latest/miniconda.html
 
-### 2.  Install Ollama
-Go to [Ollama Download page](https://ollama.com/download)
-Download for you version,I used windows, ensure it's running after installaion
-Open a cmd prompt and pull the following models. 
+### 2️⃣ Install Ollama and Pull Models
 
-llama3.2:1b - LLM
+Download Ollama for your OS:  
+🔗 https://ollama.com/download
 
-nomic-embed-text - Embedding model - this will be necessary for our vector store
-
+Then open a terminal or command prompt and run:
 
 ```bash
-# pull llm and embeding models
-Ollama pull llama3.2:1b
-Ollama pull nomic-embed-text
+ollama pull llama3             # LLM model
+ollama pull nomic-embed-text   # Embedding model
 ```
 
+Make sure Ollama is running after installation.
 
-### 🧪 3. Set Up the Environment
+### 3️⃣ Set Up the Project Environment
+
 ```bash
 # Clone the repo
 git clone https://github.com/MadMando/rag-llm-app.git
 cd rag-llm-app
 
-# Create and activate the conda environment
+# Create and activate your conda environment
 conda create -n rag-env python=3.12 -y
 conda activate rag-env
 
-# Install UV and Langflow - better this way
+# Install uv and langflow
 pip install uv
 uv pip install langflow
 
-# Install dependencies using uv
+# Install all other dependencies
 uv pip install -r requirements.txt
+```
 
+### 4️⃣ Start the RAG Stack
+
+```bash
 # Start ChromaDB
 chroma run --path ./data/chroma_data
 
-# Start Langflow (optional)
-uv run langflow run
+# Start Langflow
+langflow run
+```
 
-# Start FastAPI server
-python app/main.py
+Langflow will open at:  
+👉 http://localhost:7860
+
+### 5️⃣ (Optional) Run FastAPI App
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Visit the docs:  
+👉 http://localhost:8000/docs
+
+### 📂 Document Ingestion
+
+Drop your `.pdf` and `.txt` files into the `data/` folder.  
+Langflow will use them during your flow execution with ChromaDB.
+
+## ✅ Status
+
+- ✅ Local LLMs via Ollama  
+- ✅ Langflow integration  
+- ✅ Multi-user query support via FastAPI  
+- ⏳ Next: Add UI chat interface + advanced chunking logic
+
+## 📄 License
+
+MIT License
+
+## ✍️ Author
+
+Built by [Armando Medina](https://www.linkedin.com/in/armandomedina)  
+Follow for more projects on GenAI, RAG, and LLM applications.
