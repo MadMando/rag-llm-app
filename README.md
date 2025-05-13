@@ -182,7 +182,7 @@ Ask it specific questions based on your PDFs or text. For more accurate response
 ## 🌐 Sample Web Chat
 You can embed the chat interface on a custom webpage using the `<langflow-chat>` component. See example `index.html` in this repo.
 Remember to add your langflow flow id located on the address bar 
-![Langflow flow id](./img/langflow_id.png)
+![Langflow flow id](./img/lanflow_id.png)
 
 ## ✅ Status
 
