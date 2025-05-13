@@ -89,7 +89,7 @@ uv pip install -r requirements.txt
 chroma run --path ./data/chroma_data
 
 # Start Langflow (optional)
-langflow run
+uv run langflow run
 
 # Start FastAPI server
 python app/main.py
