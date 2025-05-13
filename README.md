@@ -84,6 +84,11 @@ uv pip install -r requirements.txt
 # Start ChromaDB
 chroma run --path ./data/chroma_data
 
+# open a new cmd prompt navigate to rag--llm-app folder and activate env again.
+
+cd rag-llm-app
+conda activate rag-env
+
 # Start Langflow using uv
 uv run langflow run
 ```
