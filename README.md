@@ -1,14 +1,12 @@
-
 # 🧠 RAG LLM App (Local & Multi-User)
 
-A fully local, multi-user **Retrieval-Augmented Generation (RAG)** application powered by **Langflow**, **ChromaDB**, **Ollama**, and **FastAPI**. This project allows you to load documents, generate embeddings, store in a vector database, and query them using a local LLM — all served via an API for concurrent access.
+A fully local, multi-user **Retrieval-Augmented Generation (RAG)** application powered by **Langflow**, **ChromaDB**, and **Ollama**. This project allows you to load documents, generate embeddings, store them in a vector database, and query them using a local LLM — all within a visually interactive pipeline.
 
 ## 🚀 Features
 
 - 🔍 Search across your own documents (`.pdf`, `.txt`)
 - 🧠 Local LLM inference with quantized models (via Ollama)
 - 🗃️ Vector storage and retrieval using ChromaDB
-- ⚡ FastAPI backend with multi-user support
 - 🖼️ Langflow UI for no-code visual pipelines
 
 ## 🛠️ Tech Stack
@@ -19,15 +17,12 @@ A fully local, multi-user **Retrieval-Augmented Generation (RAG)** application p
 | Embeddings    | Ollama (`nomic-embed-text`) |
 | Vector DB     | ChromaDB           |
 | Orchestration | Langflow           |
-| API Server    | FastAPI            |
 | Environment   | Python 3.12 (Miniconda) |
 
 ## 🗂️ Project Structure
 
 ```
 rag-llm-app/
-├── app/
-│   └── main.py          # FastAPI app
 ├── data/                # Drop .pdf or .txt documents here
 ├── langflow/            # Langflow project files (optional)
 ├── requirements.txt     # Python dependencies (except langflow/uv)
@@ -84,8 +79,7 @@ uv pip install -r requirements.txt
 # Start ChromaDB
 chroma run --path ./data/chroma_data
 
-# open a new cmd prompt navigate to rag--llm-app folder and activate env again.
-
+# open a new cmd prompt, navigate to rag-llm-app folder and activate env again
 cd rag-llm-app
 conda activate rag-env
 
@@ -96,26 +90,90 @@ uv run langflow run
 Langflow will open at:  
 👉 http://localhost:7860
 
-### 5️⃣ (Optional) Run FastAPI App
-
-```bash
-uvicorn app.main:app --reload
-```
-
-Visit the docs:  
-👉 http://localhost:8000/docs
-
 ### 📂 Document Ingestion
 
 Drop your `.pdf` and `.txt` files into the `data/` folder.  
 Langflow will use them during your flow execution with ChromaDB.
 
+## 🧩 Langflow Project Setup (Step-by-Step)
+
+### 📁 Step 1: Directory Tool
+- Drag the **Directory** tool to the canvas.
+- Configure it to point to the `data/` directory.
+
+### ✂️ Step 2: Text Splitting
+- Drag in a **Text Splitter** tool.
+- Set `chunk size` to `500` and `chunk overlap` to `100`.
+- Connect the Directory output (Data) to the TextSplitter input (Data or Dataframe).
+
+### 🧠 Step 3: Embeddings
+- Drag in the **Ollama Embeddings** tool.
+- Choose `nomic-embed-text` as the model.
+
+### 📦 Step 4: Chroma Vector Store
+- Drag in the **Chroma Vector Store** tool.
+- Set the `Collection Name` to `CFR-1` (or your choice).
+- Set the `Persist Directory` to the `data/` folder.
+- Connect Chunks from the TextSplitter to Ingest Data in ChromaDB, and Embeddings to Embeddings.
+
+### ▶️ Run the workflow by pressing the Play button next to the ChromaDB tool.
+- This will create your embeddings and load them into the vector store.
+
+### 💬 Chat-Ready Flow Setup
+
+### 🧾 Step 5: Chat Input
+- Drag in the **Chat Input** tool.
+- Connect it to the **Search Query** input on **Chroma DB**.
+
+### 🔍 Step 6: Chroma DB Search
+- Already configured with collection name `CFR-1` and data path.
+- It returns document chunks relevant to the query.
+
+### 🧹 Step 7: Parser
+- Add the **Parser** tool.
+- Set it to `text({text})` mode to turn Chroma results into a usable string.
+- Connect **Chroma DB → Parser**.
+
+### 🧾 Step 8: Prompt Template
+- Drag in a **Prompt** tool.
+- Example template:
+  ```
+  You are an analyst. Your job is to review provided context and answer questions based on federal, state, or industry-specific compliance rules.
+
+  Context: {context}
+  Question: {question}
+  ```
+
+### 🤖 Step 9: Ollama (LLM)
+- Add the **Ollama** tool.
+- Model: `llama3.2-1b`
+- Connect **Prompt → Ollama** input.
+
+### 💬 Step 10: Chat Output
+- Add **Chat Output**.
+- Connect **Ollama → Chat Output**.
+
+### 🔗 Connections
+- Chat Input **Message** → ChromaDB **Search Query**
+- Ollama Embeddings **Embeddings** → ChromaDB **Embeddings**
+- ChromaDB **DataFrame** → Parser **Data or DataFrame**
+- Parser **Parsed Text** → Prompt **context**
+- Chat Input **Message** → Prompt **question**
+- Prompt **Prompt Message** → Ollama **Input**
+- Ollama **Message** → Chat Output **Text**
+
+### ▶️ Click on Playground (upper left) to test your chat
+Ask it specific questions based on your PDFs or text. For more accurate responses, set temperature to `0.1`. For more creative answers, increase it.
+
+## 🌐 Sample Web Chat
+You can embed the chat interface on a custom webpage using the `<langflow-chat>` component. See example `index.html` in this repo.
+
 ## ✅ Status
 
 - ✅ Local LLMs via Ollama  
 - ✅ Langflow integration  
-- ✅ Multi-user query support via FastAPI  
-- ⏳ Next: Add UI chat interface + advanced chunking logic
+- ✅ In-browser chat widget
+- ⏳ Next: Shareable hosted demo + Langflow project exports
 
 ## 📄 License
 
