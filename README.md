@@ -26,6 +26,7 @@ rag-llm-app/
 ├── data/                # Drop .pdf or .txt documents here
 ├── langflow/            # Langflow project files (optional)
 ├── requirements.txt     # Python dependencies (except langflow/uv)
+├── Index.html           # Sample HTML index file with chat widget
 ├── .gitignore
 └── README.md
 ```
