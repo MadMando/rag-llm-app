@@ -191,6 +191,8 @@ You can embed the chat interface on a custom webpage using the `<langflow-chat>`
 Remember to add your langflow flow id located on the address bar 
 ![Langflow flow id](./img/lanflow_id.png)
 
+![Langflow Chat Demo](./img/ChatWidget.gif)
+
 ## ✅ Status
 
 - ✅ Local LLMs via Ollama  
