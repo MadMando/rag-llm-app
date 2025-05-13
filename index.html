@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ollama RAG Assistant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #f8f9fa, #e0eafc);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #0d6efd;
+      color: white;
+      padding: 1rem;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    main {
+      padding: 2rem;
+      text-align: center;
+      max-width: 800px;
+    }
+    .chat-widget {
+      margin-top: 2rem;
+      width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .chat-pointer {
+      font-size: 1rem;
+      color: #0d6efd;
+      animation: bounce 1s infinite;
+      margin-bottom: 1rem;
+    }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+    .tech-info {
+      margin-top: 3rem;
+      text-align: left;
+      background-color: #ffffff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    footer {
+      margin-top: auto;
+      padding: 1rem;
+      background: #f1f1f1;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ollama Vector RAG Chat Assistant</h1>
+  </header>
+
+  <main>
+    <p>Welcome to your private Retrieval-Augmented Generation (RAG) assistant powered by local LLMs. Ask anything related to your documents, and the assistant will respond in real-time.</p>
+
+    <div class="chat-widget">
+      <div class="chat-pointer">⬇️ Click here to chat</div>
+      <script src="https://cdn.jsdelivr.net/gh/logspace-ai/langflow-embedded-chat@v1.0.7/dist/build/static/js/bundle.min.js"></script>
+      <langflow-chat
+        window_title="OllamaVector_RAG_LLM"
+        flow_id="YOUR_FLOW_ID_HERE"
+        host_url="http://127.0.0.1:7860">
+      </langflow-chat>
+    </div>
+
+    <div class="tech-info">
+      <h2>🔧 Application Stack</h2>
+      <ul>
+        <li><strong>Langflow</strong> – Visual low-code builder for LLM pipelines</li>
+        <li><strong>Ollama</strong> – Local LLM runtime (using llama3)</li>
+        <li><strong>ChromaDB</strong> – Local vector store for document embeddings</li>
+        <li><strong>FastAPI</strong> – Web API framework (used optionally for serving endpoints)</li>
+        <li><strong>Python 3.12</strong> – Core runtime environment</li>
+        <li><strong>uv</strong> – Fast dependency installer for Python</li>
+        <li><strong>HTML + JS Embed</strong> – For frontend integration with Langflow</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Ollama RAG LLM | Local AI, Real Answers
+  </footer>
+</body>
+</html>
