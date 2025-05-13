@@ -13,7 +13,7 @@ A fully local, multi-user **Retrieval-Augmented Generation (RAG)** application p
 
 | Layer         | Tool               |
 |---------------|--------------------|
-| LLM           | Ollama (`llama3`)  |
+| LLM           | Ollama (`llama3.2:1b`)  |
 | Embeddings    | Ollama (`nomic-embed-text`) |
 | Vector DB     | ChromaDB           |
 | Orchestration | Langflow           |
@@ -33,9 +33,6 @@ rag-llm-app/
 
 ## ⚙️ Quickstart Guide (via Miniconda)
 
-> Full setup instructions and Langflow flows are available in the repo:  
-> 👉 [https://github.com/MadMando/rag-llm-app](https://github.com/MadMando/rag-llm-app)
-
 ### 1️⃣ Install Miniconda
 
 Download Miniconda from:  
@@ -49,7 +46,7 @@ Download Ollama for your OS:
 Then open a terminal or command prompt and run:
 
 ```bash
-ollama pull llama3             # LLM model
+ollama pull llama3.2:1b             # LLM model
 ollama pull nomic-embed-text   # Embedding model
 ```
 
@@ -68,7 +65,6 @@ conda activate rag-env
 
 # Install uv and langflow
 pip install uv
-uv pip install langflow
 
 # Install all other dependencies
 uv pip install -r requirements.txt
@@ -104,7 +100,7 @@ Langflow will use them during your flow execution with ChromaDB.
 
 ### ✂️ Step 2: Text Splitting
 - Drag in a **Text Splitter** tool.
-- Set `chunk size` to `500` and `chunk overlap` to `100`.
+- Set `chunk size` to `500` and `chunk overlap` to `100`. This seems to work well for me.
 - Connect the Directory output (Data) to the TextSplitter input (Data or Dataframe).
 
 ### 🧠 Step 3: Embeddings
@@ -144,17 +140,29 @@ Langflow will use them during your flow execution with ChromaDB.
   Context: {context}
   Question: {question}
   ```
+- You will need to adjust this to be specific to what you want your output to look like,  take your time creating the prompt message. 
 
 ### 🤖 Step 9: Ollama (LLM)
 - Add the **Ollama** tool.
 - Model: `llama3.2-1b`
 - Connect **Prompt → Ollama** input.
+  
+⚠️ **Important Note for Langflow v1.4.1 Users:**
+If you're running **Langflow version 1.4.1**, there's a known issue where the **model list does not populate** properly inside the Ollama component.
+
+To work around this bug:
+1. Click the **`</>` (Code)** icon on the Ollama tool.
+2. Go to **line 289** and remove the word `await` from `await tags_response.json()` — make it just `tags_response.json()`.
+3. Do the same for **line 301**: remove `await` from `show_response.json()`.
+
+These changes bypass the async misuse and restore model visibility in the dropdown.
+> This issue is expected to be fixed in a future version of Langflow.
 
 ### 💬 Step 10: Chat Output
 - Add **Chat Output**.
 - Connect **Ollama → Chat Output**.
 
-### 🔗 Connections
+### 🔗 Connections Overview
 - Chat Input **Message** → ChromaDB **Search Query**
 - Ollama Embeddings **Embeddings** → ChromaDB **Embeddings**
 - ChromaDB **DataFrame** → Parser **Data or DataFrame**
@@ -163,7 +171,7 @@ Langflow will use them during your flow execution with ChromaDB.
 - Prompt **Prompt Message** → Ollama **Input**
 - Ollama **Message** → Chat Output **Text**
 
-### ▶️ Click on Playground (upper left) to test your chat
+### ▶️ Click on Playground (upper right) to test your chat
 Ask it specific questions based on your PDFs or text. For more accurate responses, set temperature to `0.1`. For more creative answers, increase it.
 
 ## 🌐 Sample Web Chat
