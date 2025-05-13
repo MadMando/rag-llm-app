@@ -1,6 +1,6 @@
-# 🧠 RAG LLM App (Local & Multi-User)
+# 🧠 RAG LLM (Local)
 
-A fully local, multi-user **Retrieval-Augmented Generation (RAG)** application powered by **Langflow**, **ChromaDB**, and **Ollama**. This project allows you to load documents, generate embeddings, store them in a vector database, and query them using a local LLM — all within a visually interactive pipeline.
+A fully local **Retrieval-Augmented Generation (RAG)** application powered by **Langflow**, **ChromaDB**, and **Ollama**. This project allows you to load documents, generate embeddings, store them in a vector database, and query them using a local LLM — all within a visually interactive pipeline.
 
 ## 🚀 Features
 
@@ -8,6 +8,13 @@ A fully local, multi-user **Retrieval-Augmented Generation (RAG)** application p
 - 🧠 Local LLM inference with quantized models (via Ollama)
 - 🗃️ Vector storage and retrieval using ChromaDB
 - 🖼️ Langflow UI for no-code visual pipelines
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.12-blue?logo=python" alt="Python Badge"/>
+  <img src="https://img.shields.io/badge/Langflow-Orchestration-purple" alt="Langflow Badge"/>
+  <img src="https://img.shields.io/badge/Ollama-LLM-green" alt="Ollama Badge"/>
+  <img src="https://img.shields.io/badge/ChromaDB-VectorDB-orange" alt="ChromaDB Badge"/>
+</p>
 
 ## 🛠️ Tech Stack
 
@@ -199,3 +206,4 @@ MIT License
 
 Built by [Armando Medina](https://www.linkedin.com/in/armandomedina)  
 Follow for more projects on GenAI, RAG, and LLM applications.
+Created with the help of 
