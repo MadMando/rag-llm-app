@@ -84,8 +84,8 @@ uv pip install -r requirements.txt
 # Start ChromaDB
 chroma run --path ./data/chroma_data
 
-# Start Langflow
-langflow run
+# Start Langflow using uv
+uv run langflow run
 ```
 
 Langflow will open at:  
