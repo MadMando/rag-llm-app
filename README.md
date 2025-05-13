@@ -209,4 +209,4 @@ MIT License
 Built by [Armando Medina](https://www.linkedin.com/in/armandomedina)  
 Follow for more projects on GenAI, RAG, and LLM applications.
 
-**Created with the help of local llm using langflow and ollama **
+**Created with the help of local llm using langflow and ollama**
