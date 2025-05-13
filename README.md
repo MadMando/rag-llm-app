@@ -90,7 +90,7 @@ Langflow will open at:
 ### 🖼️ Example Langflow Diagram
 Here's what a complete working flow looks like in Langflow:
 
-![Langflow Example Setup](./docs/langlfow_workflow_example.png)
+![Langflow Example Setup](./img/langlfow_workflow_example.png)
 
 ### 📂 Document Ingestion
 
