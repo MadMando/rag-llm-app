@@ -70,7 +70,7 @@ cd rag-llm-app
 conda create -n rag-env python=3.12 -y
 conda activate rag-env
 
-# Install uv and langflow
+# Install uv - makes things easier!
 pip install uv
 
 # Install all other dependencies
