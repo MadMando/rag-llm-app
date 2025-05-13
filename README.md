@@ -61,8 +61,12 @@ cd rag-llm-app
 conda create -n rag-env python=3.12 -y
 conda activate rag-env
 
-# Install dependencies
-pip install -r requirements.txt
+# Install UV and Langflow - better this way
+pip install uv
+uv pip install langflow
+
+# Install dependencies using uv
+uv pip install -r requirements.txt
 
 # Start ChromaDB
 chroma run --path ./data/chroma_data
