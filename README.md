@@ -56,7 +56,7 @@ Then open a terminal or command prompt and run:
 ollama pull llama3.2:1b             # LLM model
 ollama pull nomic-embed-text   # Embedding model
 ```
-
+You can explore other LLM models on the Ollama website—I chose the 1B model for its lightweight footprint and strong generalization capabilities.
 Make sure Ollama is running after installation.
 
 ### 3️⃣ Set Up the Project Environment
