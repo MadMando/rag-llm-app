@@ -47,7 +47,7 @@ Download Miniconda from:
 
 ### 2️⃣ Install Ollama and Pull Models
 
-Download Ollama for your OS:  
+Download and install Ollama for your OS:  
 🔗 https://ollama.com/download
 
 Then open a terminal or command prompt and run:
