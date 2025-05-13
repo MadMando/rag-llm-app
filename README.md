@@ -87,6 +87,11 @@ uv run langflow run
 Langflow will open at:  
 👉 http://localhost:7860
 
+### 🖼️ Example Langflow Diagram
+Here's what a complete working flow looks like in Langflow:
+
+![Langflow Example Setup](./docs/langlfow_workflow_example.png)
+
 ### 📂 Document Ingestion
 
 Drop your `.pdf` and `.txt` files into the `data/` folder.  
