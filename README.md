@@ -51,7 +51,24 @@ rag-llm-app/
 If you don’t have Miniconda installed, download it from:  
 🔗 https://docs.conda.io/en/latest/miniconda.html
 
-### 🧪 2. Set Up the Environment
+### 2.  Install Ollama
+Go to [Ollama Download page](https://ollama.com/download)
+Download for you version,I used windows, ensure it's running after installaion
+Open a cmd prompt and pull the following models. 
+
+llama3.2:1b - LLM
+
+nomic-embed-text - Embedding model - this will be necessary for our vector store
+
+
+```bash
+# pull llm and embeding models
+Ollama pull llama3.2:1b
+Ollama pull nomic-embed-text
+```
+
+
+### 🧪 3. Set Up the Environment
 ```bash
 # Clone the repo
 git clone https://github.com/MadMando/rag-llm-app.git
