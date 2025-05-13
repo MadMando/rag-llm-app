@@ -23,7 +23,6 @@ A fully local, multi-user **Retrieval-Augmented Generation (RAG)** application p
 | Vector DB        | [ChromaDB](https://www.trychroma.com/)     |
 | Orchestration    | [Langflow](https://github.com/logspace-ai/langflow) |
 | API Layer        | [FastAPI](https://fastapi.tiangolo.com/)   |
-| Containerization | Docker               |
 | Language         | Python 3.12          |
 
 ---
